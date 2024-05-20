@@ -2,7 +2,6 @@ from app.models.data import get_data, delete_empty_operations, get_first_five_so
 from app.models.operation import Operation
 from settings import PATH_WITH_FIXTURES
 
-
 data = get_data(PATH_WITH_FIXTURES)
 
 new_data = delete_empty_operations(data)
@@ -19,10 +18,8 @@ for oper in five_operations:
                     _from_=oper.get('from'))
     print(oper)
 
-
 def main():
     pass
-
 
 if __name__ == '__main__':
     main()

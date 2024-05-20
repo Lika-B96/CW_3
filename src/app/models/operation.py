@@ -1,8 +1,18 @@
 from datetime import datetime
 
-
 class Operation:
     def __init__(self, oper_id, transw_state, oper_date_, operation_amount, description_type, _to_, _from_=''):
+        """
+        Инициализирует экземпляр класса Operation.
+
+        :param oper_id: идентификатор операции
+        :param oper_date_: дата операции в формате '%Y-%m-%dT%H:%M:%S.%f'
+        :param transw_state: состояние перевода
+        :param operation_amount: сумма операции
+        :param description_type: тип описания операции
+        :param _to_: номер счета или кредитной карты получателя
+        :param _from_: номер счета или кредитной карты отправителя (по умолчанию пустая строка)
+        """
         self.oper_id = oper_id
         self.transw_state = transw_state
         self.oper_date = self._encoded_date(oper_date_)
@@ -12,6 +22,13 @@ class Operation:
         self._from_ = self.numbers_masking(_from_)if _from_ else ''
 
     def _encoded_date(self, oper_date):
+        """
+        Метод принимает на вход дату операции в одном формате
+        и возвращает ее в другом формате.
+
+        :param oper_date: дата операции в формате '%Y-%m-%dT%H:%M:%S.%f'
+        :return: дата операции в формате '%d.%m.%Y'
+        """
         date_format = '%Y-%m-%dT%H:%M:%S.%f'
         oper_date = datetime.strptime(oper_date, date_format)
         return datetime.strftime(oper_date, '%d.%m.%Y')
@@ -22,6 +39,9 @@ class Operation:
         Метод принимает на входе строку с номером кредитной карты
         или номером счета и возвращает их с частично замаскированными
         символом '*' цифрами
+
+        :param account_number: номер кредитной карты или счета
+        :return: номер кредитной карты или счета с частично замаскированными цифрами
         """
         if account_number.startswith('Счет'):
             list_card_number = account_number.split(' ')
@@ -33,6 +53,11 @@ class Operation:
         return ' '.join(list_card_number)
 
     def __str__(self):
+        """
+        Возвращает строковое представление объекта Operation
+
+        :return: строковое представление объекта Operation
+        """
         return f'{self.oper_date} {self.description_type}\n{self._from_} -> {self._to_}\n{self.operation_amount["amount"] + " " + self.operation_amount["currency"]["name"] }'
 
 
