@@ -7,6 +7,7 @@ class TestOperation(unittest.TestCase):
         operation = Operation(1, 'success', oper_date, 100, 'transfer', '1234567890123456')
         self.assertEqual(operation.oper_date, '24.02.2023')
 
+
     def test_numbers_masking(self):
         account_number = 'Счет 1234567890123456'
         masked_number = Operation.numbers_masking(account_number)

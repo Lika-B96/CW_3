@@ -58,7 +58,11 @@ class Operation:
 
         :return: строковое представление объекта Operation
         """
-        return f'{self.oper_date} {self.description_type}\n{self._from_} -> {self._to_}\n{self.operation_amount["amount"] + " " + self.operation_amount["currency"]["name"] }'
+        if isinstance(self.operation_amountcd, int):
+            amount_str = str(self.operation_amount) + ' RUB'
+        else:
+            amount_str = self.operation_amount["amount"] + " " + self.operation_amount["currency"]["name"]
+        return f'{self.oper_date} {self.description_type}\n{self._from_} -> {self._to_}\n{amount_str}'
 
 
 

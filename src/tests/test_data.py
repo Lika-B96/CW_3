@@ -1,7 +1,7 @@
 from src.app.models.data import get_data
 from src.app.models.operation import Operation
-from src.settings import PATH_WITH_FIXTURES
-
+import unittest
+from src.app.models.operation import get_first_five_sorted_operations
 
 def test_get_data():
     data = get_data(PATH_WITH_FIXTURES)
