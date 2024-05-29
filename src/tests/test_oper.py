@@ -1,5 +1,5 @@
 import unittest
-from app.models.operation import Operation
+from app.operation import Operation
 
 class TestOperationCreation(unittest.TestCase):
     def test_operation_creation(self):

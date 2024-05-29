@@ -1,5 +1,5 @@
 import unittest
-from app.models.operation import _encoded_date, Operation
+from app.operation import Operation, _encoded_date
 
 class TestEncodedDate(unittest.TestCase):
 
