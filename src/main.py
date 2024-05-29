@@ -1,5 +1,5 @@
-from app.models.data import get_data, delete_empty_operations, get_first_five_sorted_operations
-from app.models.operation import Operation
+from src.app.data import get_data, delete_empty_operations, get_first_five_sorted_operations
+from src.app.operation import Operation
 from settings import PATH_WITH_FIXTURES
 
 data = get_data(PATH_WITH_FIXTURES)

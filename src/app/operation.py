@@ -58,7 +58,7 @@ class Operation:
 
         :return: строковое представление объекта Operation
         """
-        if isinstance(self.operation_amountcd, int):
+        if isinstance(self.operation_amount, int):
             amount_str = str(self.operation_amount) + ' RUB'
         else:
             amount_str = self.operation_amount["amount"] + " " + self.operation_amount["currency"]["name"]
